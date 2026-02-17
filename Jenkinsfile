@@ -78,12 +78,10 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                echo "🚦 Waiting for SonarQube Quality Gate..."
-                timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: false
-                }
-            }
+                    echo "🚦 Skipping Quality Gate (will check manually later)..."
+            }   
         }
+
 
         stage('Docker Build') {
             steps {

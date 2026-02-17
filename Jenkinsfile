@@ -103,15 +103,19 @@ pipeline {
         stage('Docker Smoke Test') {
             steps {
                 echo "🧪 Running container smoke test..."
-                // Supprime le conteneur s'il existe déjà
+                // Supprime le conteneur existant s'il existe déjà
                 bat "docker rm -f mcs_smoke || exit 0"
                 // Lance le conteneur
                 bat "docker run -d --rm -p 7070:7070 --name mcs_smoke youssefaittmilla/management-carpooling-services:latest"
-                bat "timeout /t 5"
+                // Pause 5 secondes pour que le conteneur démarre
+                bat "ping 127.0.0.1 -n 6 > nul"
+                // Affiche les logs
                 bat "docker logs mcs_smoke | more"
+                // Supprime le conteneur après le test
                 bat "docker rm -f mcs_smoke || exit 0"
             }
         }
+
 
     }
 

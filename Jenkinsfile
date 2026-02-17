@@ -6,7 +6,7 @@ pipeline {
         SONAR_PROJECT_KEY = 'Management-Carpooling-Services'
         SONAR_PROJECT_NAME = 'Management-Carpooling-Services'
         MAVEN_HOME = tool 'Maven'
-        DOCKER_IMAGE = 'yassiramraoui/management-carpooling-services'
+        DOCKER_IMAGE = 'youssefaittmilla/management-carpooling-services'
         DOCKER_TAG = 'latest'
     }
 
